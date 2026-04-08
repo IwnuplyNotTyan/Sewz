@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main, master]
 
+permissions:
+  contents: write
+  pull-requests: read
+
 jobs:
   lint:
     name: Lint
@@ -65,11 +69,11 @@ jobs:
           GOOS: linux
           GOARCH: amd64
           CGO_ENABLED: 0
-        run: go build -v -o ./bin/hera ./cmd/hera/main.go
+        run: go build -v -o ./bin/sewz ./cmd/sewz/main.go
 
       - name: Upload binary
         uses: actions/upload-artifact@v7
         with:
-          name: hera-${{ runner.os }}
-          path: ./bin/hera
+          name: sewz-${{ runner.os }}
+          path: ./bin/sewz
           if-no-files-found: error
