@@ -100,8 +100,7 @@ func renderTable(containers []container) {
 
 	if envWidth := os.Getenv("COLUMNS"); envWidth != "" {
 		var w int
-		fmt.Sscanf(envWidth, "%d", &w)
-		if w > 0 {
+		if _, err := fmt.Sscanf(envWidth, "%d", &w); err == nil && w > 0 {
 			width = w
 		}
 	}
@@ -159,7 +158,7 @@ func renderTable(containers []container) {
 		Headers(headers...).
 		Rows(rows...)
 
-	lipgloss.Println(t)
+	_, _ = lipgloss.Println(t)
 }
 
 func FormatPorts(ports string) string {
