@@ -1,9 +1,9 @@
 module sewz
 
-go 1.25.5
+go 1.26.7
 
 require (
-	charm.land/lipgloss/v2 v2.0.6
+	charm.land/lipgloss/v2 v2.1.0
 	github.com/charmbracelet/fang v1.0.0
 	github.com/spf13/cobra v1.10.2
 )
